@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' data: blob: filesystem: https://tyradex.vercel.app https://tyradex.app;
+                 img-src * data: blob: filesystem:;
+                 style-src 'self' 'unsafe-inline';
+                 script-src 'self' 'unsafe-eval' 'unsafe-inline';
+                 connect-src * data: blob: filesystem:;">
+  <title>PokeQuiz</title>
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+  <header class="appbar">
+    <img src="img/logo.png" alt="logo" class="logo" />
+    <span>PokeQuiz</span>
+  </header>
+
+  <!-- Accueil -->
+  <section id="screen-home" class="screen active">
+    <div class="container">
+      <button id="btn-play" class="btn primary">Jouer au quizz</button>
+      <button id="btn-leaderboard" class="btn">Voir le classement</button>
+    </div>
+  </section>
+
+  <!-- Quizz -->
+  <section id="screen-quiz" class="screen">
+    <div class="container">
+      <div class="hud">
+        <span id="hud-q">Q: 0/10</span>
+        <span id="hud-score">Score: 0</span>
+        <span id="hud-time">Temps: 0s</span>
+      </div>
+      <div id="poke-wrap">
+        <img id="poke-img" alt="Qui est-ce ?" />
+      </div>
+      <form id="answer-form" autocomplete="off">
+        <input id="answer-input" type="text" placeholder="Nom du Pokémon" required />
+        <button class="btn primary" type="submit">Valider</button>
+      </form>
+      <div id="feedback"></div>
+      <div class="row">
+        <button id="btn-next" class="btn" disabled>Suivant</button>
+        <button id="btn-quit" class="btn danger">Quitter</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Résultat -->
+  <section id="screen-finish" class="screen">
+    <div class="container">
+      <h2 id="final-title">Terminé</h2>
+      <p id="final-stats"></p>
+      <form id="save-form" autocomplete="off">
+        <input id="player-name" type="text" placeholder="Ton nom" required />
+        <button class="btn primary" type="submit">Sauvegarder</button>
+      </form>
+      <button id="finish-home" class="btn">Accueil</button>
+    </div>
+  </section>
+
+  <!-- Classement -->
+  <section id="screen-leaderboard" class="screen">
+    <div class="container">
+      <h2>Top 5</h2>
+      <table class="table" id="scores-table">
+        <thead><tr><th>#</th><th>Nom</th><th>Score</th><th>Temps</th><th>Date</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="row">
+        <button id="lb-home" class="btn">Accueil</button>
+        <button id="lb-reset" class="btn danger">Réinitialiser scores</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="cordova.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
