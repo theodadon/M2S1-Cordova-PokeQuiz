@@ -4,6 +4,10 @@ const show = id => document.querySelectorAll('.screen').forEach(x => x.id===id ?
 const sleep = ms => new Promise(r=>setTimeout(r,ms));
 const strip = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[\s'’.-]/g,'');
 
+function vib(pattern){
+  if (window.AdvVibration && Array.isArray(pattern)) AdvVibration.vibrate(pattern);
+  else if (navigator.vibrate) navigator.vibrate(pattern);
+}
 // stockage via cordova-plugin-file, fallback localStorage
 const Storage = {
   fileName: 'scores.json',
@@ -117,7 +121,8 @@ async function startQuiz(){
 async function finish(){
   const timeSec = Math.floor((Date.now()-t0)/1000);
   $('#final-stats').textContent = `Score: ${score}/${TOTAL} • Temps: ${timeSec}s`;
-  if (navigator.vibrate) navigator.vibrate(400);               // fin du quiz
+  if (navigator.vibrate) navigator.vibrate(400);    
+  vib([200,100,200,100,200]);           // fin du quiz
   show('screen-finish');
 }
 async function saveResult(name){
@@ -147,10 +152,10 @@ function bind(){
 if (checkAnswer(val)) {
   score++;
   $('#feedback').textContent = `Correct : ${current.answerFr || current.answerEn}`;
-  if (navigator.vibrate) navigator.vibrate(200);              // bonne réponse
+  vib([200]);
 } else {
   $('#feedback').textContent = `Raté : ${current.answerFr || current.answerEn}`;
-  if (navigator.vibrate) navigator.vibrate([120, 80, 220]);   // mauvaise réponse
+  vib([200,100,200]);
 }
 
     $('#btn-next').disabled = false; updateHUD();

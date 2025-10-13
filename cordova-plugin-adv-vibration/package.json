@@ -1,0 +1,8 @@
+{
+  "name": "cordova-plugin-adv-vibration",
+  "version": "1.0.0",
+  "description": "Advanced vibration plugin for Cordova (Android)",
+  "cordova": { "id": "com.example.advvibration", "platforms": ["android"] },
+  "keywords": ["cordova","vibration","android"],
+  "license": "MIT"
+}

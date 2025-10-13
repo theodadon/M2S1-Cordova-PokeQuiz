@@ -9,7 +9,6 @@
   <author email="you@example.com" href="https://example.com">Author</author>
 
   <content src="index.html" />
-cordova plugin add cordova-plugin-vibration
   <!-- Réseau -->
   <plugin name="cordova-plugin-whitelist" spec="^1.3.5" />
   <access origin="*" />
