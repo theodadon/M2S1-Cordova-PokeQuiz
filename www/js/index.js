@@ -117,6 +117,7 @@ async function startQuiz(){
 async function finish(){
   const timeSec = Math.floor((Date.now()-t0)/1000);
   $('#final-stats').textContent = `Score: ${score}/${TOTAL} • Temps: ${timeSec}s`;
+  if (navigator.vibrate) navigator.vibrate(400);               // fin du quiz
   show('screen-finish');
 }
 async function saveResult(name){
@@ -143,8 +144,15 @@ function bind(){
     if (!current) return;
     const val = $('#answer-input').value.trim();
     if (!val) return;
-    if (checkAnswer(val)) { score++; $('#feedback').textContent = `Correct : ${current.answerFr || current.answerEn}`; }
-    else { $('#feedback').textContent = `Raté : ${current.answerFr || current.answerEn}`; }
+if (checkAnswer(val)) {
+  score++;
+  $('#feedback').textContent = `Correct : ${current.answerFr || current.answerEn}`;
+  if (navigator.vibrate) navigator.vibrate(200);              // bonne réponse
+} else {
+  $('#feedback').textContent = `Raté : ${current.answerFr || current.answerEn}`;
+  if (navigator.vibrate) navigator.vibrate([120, 80, 220]);   // mauvaise réponse
+}
+
     $('#btn-next').disabled = false; updateHUD();
   });
   $('#btn-next').onclick = nextQuestion;
