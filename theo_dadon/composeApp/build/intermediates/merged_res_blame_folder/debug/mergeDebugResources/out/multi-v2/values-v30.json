@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.mastercyber.tp1.composeApp-mergeDebugResources-35:/values-v30/values-v30.xml",
+            "map": [
+                {
+                    "source": "/home/theo/.gradle/caches/8.14.3/transforms/d67e4e8d16f92ff2834b55987c789b05/transformed/material3-release/res/values-v30/values-v30.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "72",
+                        "endOffsets": "123"
+                    }
+                }
+            ]
+        }
+    ]
+}
